@@ -1,32 +1,32 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { BiteSession } from "../services/session-service";
-import { Button } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { BiteSession } from '../services/session-service';
+import { Box, Button } from '@mui/material';
+import { useState } from 'react';
 
 interface Props {
   session: BiteSession;
-  onDetailClick: () => void;
+  onDetailClick: (id: number) => void;
 }
 
 export const SessionPreviewCard = ({ session, onDetailClick }: Props) => {
   return (
-    <>
-      <Card className="w-[100px]">
+    <section className='flex justify-between items-center'>
+      <Card className='w-64 flex flex-col justify-between border-2 border-solid border-purple-500'>
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant='h5' component='div'>
             {session.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant='body2' color='text.secondary'>
             {session.description}
           </Typography>
         </CardContent>
+        <Button onClick={() => onDetailClick(session.id)} variant='contained'>
+          View Detail
+        </Button>
       </Card>
-      <Button onClick={onDetailClick} variant="contained">
-        View Detail
-      </Button>
-    </>
+    </section>
   );
 };
 

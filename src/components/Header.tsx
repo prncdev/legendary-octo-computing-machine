@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import { useAuth } from "../context/AuthProvider";
-import { LoginPopup } from "./LoginPopup";
+import { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthProvider';
+import { LoginPopup } from './LoginPopup';
+import { Button } from '@mui/material';
 
 export const Header = () => {
   const auth = useAuth();
   const [authenticated, setAuthenticated] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   useEffect(() => {
-    console.log("auth: ", auth);
+    console.log('auth: ', auth);
   }, []);
 
   useEffect(() => {
@@ -18,12 +19,20 @@ export const Header = () => {
   }, [auth]);
 
   useEffect(() => {
-    console.log("showLogin: ", showLogin);
+    console.log('showLogin: ', showLogin);
   });
 
   return (
-    <div className="">
-      <LoginPopup open={showLogin} />
+    <header className='w-full flex py-5 px-7 justify-between bg-orange-400'>
+      <h1 className='m-0 text-3xl'>Bite Buddies</h1>
+      <section>
+        <Button variant='contained' onClick={() => setShowLogin(!showLogin)}>Login now</Button>
+        <LoginPopup
+        
+          open={!showLogin}
+          onClose={() => setShowLogin(!showLogin)}
+        />
+      </section>
       {/* {auth.currentUser ? (
         <div>
           {auth.currentUser?.name}
@@ -34,6 +43,6 @@ export const Header = () => {
           <button onClick={() => setShowLogin(true)}>Login</button>
         </div>
       )} */}
-    </div>
+    </header>
   );
 };

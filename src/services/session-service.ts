@@ -17,11 +17,11 @@ export interface BiteSession {
   id: number;
   name: string;
   description: string;
-  startsAt: Date;
+  startsAt: string;
   initiatedByUserId: number;
   initiatedBy: UserInfo;
   active: boolean;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export async function getActiveSessions(

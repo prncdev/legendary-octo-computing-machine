@@ -66,6 +66,18 @@ export const ACTIVE_SESSIONS_RES = [
     active: true,
     createdAt: "2024-01-03T17:55:50.885043",
   },
+  {
+    id: 2,
+    name: "Release Celebration",
+    description: "Lets celebrate our last release",
+    initiatedByUserId: 2,
+    initiatedBy: {
+      id: 2,
+      name: "Prem",
+    },
+    active: true,
+    createdAt: "2024-01-03T17:55:50.885043",
+  },
 ];
 
 // API call as {url}/session/2

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const EditSessionDetail = ({ session, onSaveClick }: Props) => {
-  const [editedSession, setEditedSession] = useState(session);
+  const [editedSession, setEditedSession] = useState<BiteSession>(session);
 
   return (
     <div>
