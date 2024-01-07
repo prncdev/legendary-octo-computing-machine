@@ -13,6 +13,13 @@ import {
 import { api } from "./service-helper";
 import { UserInfo } from "./user-service";
 
+interface RestaurantInfo {
+  id: number;
+  name: string;
+  location: string;
+  imageUrl: string;
+}
+
 export interface BiteSession {
   id: number;
   name: string;
@@ -22,6 +29,16 @@ export interface BiteSession {
   initiatedBy: UserInfo;
   active: boolean;
   createdAt: string;
+  sessionUsers: {
+    sessionId: number;
+    user: UserInfo;
+    status: "invited" | "joined";
+  };
+  sessionRestaurant: {
+    sessionId: number;
+    restaurant: RestaurantInfo;
+    submittedByUserId: 5;
+  };
 }
 
 export async function getActiveSessions(

@@ -43,9 +43,9 @@ export const ViewSessionDetail = ({ session, onEditClick }: Props) => {
       </div> */}
 
       <div className="overflow-x-auto">
-        <SessionResturant />
+        <SessionResturant restaurants={session.sessionRestaurant} />
       </div>
-      <SessionBuddies />
+      <SessionBuddies buddies={session.sessionUsers} />
     </div>
   );
 };
