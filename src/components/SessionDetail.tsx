@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { BiteSession, getSessionDetail } from '../services/session-service';
-import { EditSessionDetail } from './EditSessionDetail';
-import Loader from './Loader';
-import { ViewSessionDetail } from './ViewSessionDetail';
+import { useEffect, useState } from "react";
+import { BiteSession, getSessionDetail } from "../services/session-service";
+import { EditSessionDetail } from "./EditSessionDetail";
+import Loader from "./Loader";
+import { ViewSessionDetail } from "./ViewSessionDetail";
 import {
   Modal,
   Box,
@@ -10,29 +10,29 @@ import {
   InputLabel,
   OutlinedInput,
   Button,
-} from '@mui/material';
+} from "@mui/material";
 
 type Props = {
   id: number;
-  open: boolean;
-  onClose: () => void;
+  // open: boolean;
+  // onClose: () => void;
 };
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: "absolute" as "absolute",
   // top: '50%',
   // left: '50%',
   // transform: 'translate(-50%, -50%)',
-  width: '80%',
-  height: '80%',
-  bgcolor: 'background.paper',
+  width: "80%",
+  height: "80%",
+  bgcolor: "background.paper",
   // border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-  overflowX: 'auto',
+  overflowX: "auto",
 };
 
-export const SessionDetail = ({ id, open, onClose }: Props) => {
+export const SessionDetail = ({ id }: Props) => {
   const [sessionDetail, setSessionDetail] = useState<BiteSession | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
@@ -48,30 +48,35 @@ export const SessionDetail = ({ id, open, onClose }: Props) => {
   };
 
   const handleSave = (details: BiteSession) => {
-    console.log('handleSave: ', details);
+    console.log("handleSave: ", details);
   };
 
   return (
     <>
-      <Modal open={open} onClose={onClose} className='flex justify-center items-center font-mono'>
-        <Box sx={style} >
-          {sessionDetail ? (
-            isEdit ? (
-              <EditSessionDetail
-                session={sessionDetail}
-                onSaveClick={handleSave}
-              />
-            ) : (
-              <ViewSessionDetail
-                session={sessionDetail}
-                onEditClick={() => setIsEdit(true)}
-              />
-            )
+      {/* <div
+        // open={open}
+        // onClose={onClose}
+        className="flex justify-center items-center font-mono"
+      > */}
+      <div>
+        {sessionDetail ? (
+          isEdit ? (
+            <EditSessionDetail
+              session={sessionDetail}
+              onSaveClick={handleSave}
+              onBackClick={console.log}
+            />
           ) : (
-            <div>Select a bite seesion to see detail </div>
-          )}
-        </Box>
-      </Modal>
+            <ViewSessionDetail
+              session={sessionDetail}
+              onEditClick={() => setIsEdit(true)}
+            />
+          )
+        ) : (
+          <div>Select a bite seesion to see detail </div>
+        )}
+      </div>
+      {/* </div> */}
       {/* {isLoading && <Loader />}
       {!!sessionDetail &&
         (!isEdit ? (
