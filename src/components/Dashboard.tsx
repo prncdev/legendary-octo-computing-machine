@@ -41,7 +41,7 @@ export const Dashboard = () => {
                 <SessionPreviewCard
                   key={index}
                   session={session}
-                  selected={true}
+                  selected={selectedId === session.id}
                   onDetailClick={handleShowDetails}
                 />
               ))}

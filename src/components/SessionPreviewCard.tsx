@@ -18,7 +18,11 @@ export const SessionPreviewCard = ({
 }: Props) => {
   return (
     <section
-      className="flex justify-between items-center cursor-pointer"
+      className={
+        "flex justify-between items-center cursor-pointer " + selected
+          ? "border-l-4 border-orange-600"
+          : ""
+      }
       onClick={() => onDetailClick(session.id)}
     >
       <Card className="w-64 flex flex-col justify-between border-2">
