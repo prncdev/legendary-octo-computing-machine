@@ -29,16 +29,16 @@ export interface BiteSession {
   initiatedBy: UserInfo;
   active: boolean;
   createdAt: string;
-  sessionUsers: {
+  sessionUsers?: {
     sessionId: number;
     user: UserInfo;
     status: "invited" | "joined";
-  };
-  sessionRestaurant: {
+  }[];
+  sessionRestaurant?: {
     sessionId: number;
     restaurant: RestaurantInfo;
     submittedByUserId: 5;
-  };
+  }[];
 }
 
 export async function getActiveSessions(
