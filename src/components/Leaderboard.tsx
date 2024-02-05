@@ -7,7 +7,7 @@ import {
   CircularProgress,
   IconButton,
 } from '@mui/material';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ClearIcon from '@mui/icons-material/Clear';
 import { FC, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { getScore } from '../services/score-service';
@@ -42,13 +42,16 @@ export const Leaderboard: FC = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Accordion
-          className='!border !rounded-lg'
-          expanded={isCollapsed}
-          onClick={() => setIsCollapsed(false)}
-        >
+        <Accordion className='!border !rounded-lg' expanded={isCollapsed}>
           <AccordionSummary
-            expandIcon={<ArrowDropDownIcon className='text-white' />}
+            expandIcon={
+              isCollapsed && (
+                <ClearIcon
+                  className='text-white'
+                  onClick={() => setIsCollapsed(false)}
+                />
+              )
+            }
             className='!text-white !bg-orange-400 !rounded-t-lg'
           >
             <div className='flex w-full gap-5 items-center px-4'>
@@ -58,8 +61,7 @@ export const Leaderboard: FC = () => {
               </IconButton>
             </div>
           </AccordionSummary>
-          <AccordionDetails
-            className='!bg-orange-50 !pb-2 !max-h-80 !overflow-y-auto flex flex-col gap-2'>
+          <AccordionDetails className='!bg-orange-50 !pb-2 !max-h-80 !overflow-y-auto flex flex-col gap-2'>
             {scores && scores.length ? (
               scores.map((s, index) => (
                 <div
