@@ -1,15 +1,11 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { Dashboard } from "./components/Dashboard";
-import { Header } from "./components/Header";
+import { AppProvider } from './contexts/AppContext';
+import { Home } from "./components/Home";
 
 function App() {
   return (
-    <main className="App">
-      <Header />
-      <Dashboard />
-    </main>
+    <AppProvider>
+      <Home />
+    </AppProvider>
   );
 }
 
